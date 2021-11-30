@@ -80,7 +80,7 @@ function alerta(notaCasteada) {
 }
 
 function calculo(variable) {
-    let resultado = ((5 * variable) + (15 - 3) / 3) + variable;
+    let resultado = 5 * variable + (15) * (-3) / 3 + variable;
 
     return resultado;
 }
