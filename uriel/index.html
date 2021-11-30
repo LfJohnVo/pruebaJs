@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pruebas</title>
+  </head>
+  <body>
+    <h1>Examen Javascript</h1>
+    <h3>Pregunta 1:</h3>
+    <p>Pide una nota (número). Muestra la calificación según la nota:</p>
+    <div>
+      <input
+        min="0"
+        max="10"
+        type="number"
+        id="nota"
+        placeholder="Escribe la nota"
+      />
+      <button onclick="obtenerNota()">Obtener Calificación</button>
+      <span id="mostrar1"></span>
+    </div>
+    <div>
+      <h3>Pregunta 2:</h3>
+      <p>
+        Crea un objeto con tu nombre, edad, calificación y mensaje de
+        calificación
+      </p>
+      <button onclick="visualizarObjeto()">Ver Objeto</button>
+    </div>
+    <div>
+      <h3>Pregunta 3:</h3>
+      <p>Imprime con HTML tu nombre, edad y calificación desde JavaScript</p>
+      <div id="contenedor"></div>
+    </div>
+    <div>
+      <h3>Pregunta 4:</h3>
+      <p>
+        Genera una función en la que retorne una alerta indicando la
+        calificación según la nota siempre y cuando la nota este casteada como
+        flotante o número
+      </p>
+      <input
+          min="0"
+          max="10"
+          type="number"
+          id="calificacion"
+          placeholder="Escribe la calificacion"
+        />
+        <button onclick="obtenerCalificacionAlerta()">Obtener Calificación</button>
+    </div>
+    <div>
+      <h3>Pregunta 5:</h3>
+      <p>
+        Ingresa tu calificación dentro de la siguiente fórmula remplazando la
+        variable x y calcúlalo dentro de otra función en la que indique lo
+        siguiente:
+        <p>Fórmula = ((5 * x) + (15)(−3) / 3) + x</p>
+        <p>si el resultado es =
+          0, que te indique que es 0 si no, que muestre que es par o impar.</p>
+        <div>
+          <input
+          min="0"
+          type="number"
+          id="calificacionFormula"
+          placeholder="Escribe la calificación"
+        />
+        <button onclick="obtenerCalificacionPorFormula()">Obtener Calificación</button>
+        </div>
+      </p>
+    </div>
+  </body>
+  <script>
+    //Pregunta 1
+    const obtenerNota = (calificacion = null) =>{
+      let nota;
+      if (calificacion) {
+        nota = calificacion;
+      }else{
+        nota = document.getElementById("nota").value;
+      }
+      if (nota != "") {
+        nota = Number(nota);
+        const mostrarContenedor = document.getElementById("mostrar1");
+        if (nota < 0 || nota > 10) {
+          console.log("Ingresa un número de 0 - 10");
+        } else {
+          if (nota >= 0 && nota <= 2) {
+            mostrarContenedor.innerHTML = "Muy deficiente";
+            console.log("Muy deficiente");
+          }
+          if (nota == 3 || nota == 4) {
+            mostrarContenedor.innerHTML = "Insuficiente";
+            console.log("Insuficiente");
+          }
+          if (nota == 5 || nota == 6) {
+            mostrarContenedor.innerHTML = "Suficiente";
+            console.log("Suficiente");
+          }
+          if (nota == 7 || nota == 8) {
+            mostrarContenedor.innerHTML = "Bien";
+            console.log("Bien");
+          }
+          if (nota == 9) {
+            mostrarContenedor.innerHTML = "Notable";
+            console.log("Notable");
+          }
+          if (nota == 10) {
+            mostrarContenedor.innerHTML = "Sobresaliente";
+            console.log("Sobresaliente");
+          }
+        }
+      } else {
+        console.log("Ingresa un número");
+      }
+    }
+
+    // Pregunta 2
+    const visualizarObjeto = () =>{
+      console.log(informacionObjeto());
+    }
+
+    const informacionObjeto = () => {
+      const objeto = {
+        nombre:"Uriel Santiago Reyes Paredes",
+        edad: 24,
+        calificacion:10,
+        mensaje:'Sobresaliente'
+      }
+      return objeto;
+      // obtenerNota(uriel.calificacion);
+    }
+
+    // Prgunta 3
+    const imprimirInformacion = ()=>{
+      const {nombre, edad, calificacion} = informacionObjeto();
+      const contenedor = document.getElementById('contenedor');
+      contenedor.innerHTML = `
+      <ul>
+      <li><strong>Nombre:</strong> ${nombre}</li>
+      <li><strong>Edad:</strong> ${edad}</li>
+      <li><strong>Calificación:</strong> ${calificacion}</li>
+      </ul>
+      `;
+    }
+    imprimirInformacion();
+
+    // Pregunta 4
+    const obtenerCalificacionAlerta = (e)=>{
+      let nota = document.getElementById("calificacion").value;
+      if (nota != "") {
+        nota = Number(nota);
+        if (nota < 0 || nota > 10) {
+          alert("Ingresa un número de 0 - 10");
+        } else {
+          if (nota >= 0 && nota <= 2) {
+            alert("Muy deficiente");
+          }
+          if (nota == 3 || nota == 4) {
+            alert("Insuficiente");
+          }
+          if (nota == 5 || nota == 6) {
+            alert("Suficiente");
+          }
+          if (nota == 7 || nota == 8) {
+            alert("Bien");
+          }
+          if (nota == 9) {
+            alert("Notable");
+          }
+          if (nota == 10) {
+            alert("Sobresaliente");
+          }
+        }
+      } else {
+        alert("Ingresa un número");
+      }
+    }
+
+    // Pregunta 5
+    const obtenerCalificacionPorFormula = () => {
+       let calificacion = document.getElementById("calificacionFormula").value
+       if (calificacion != "") {
+         calificacion = Number(calificacion)
+         const calculo = formula(calificacion);
+         if (calculo == 0) {
+          console.log('El resultado es 0');
+         }else{
+           if (calculo % 2 == 0) {
+            console.log(`El resultado es: ${calculo}, es número par`);
+           }else{
+            console.log(`El resultado es: ${calculo}, es número impar`);
+           }
+         }
+       }else{
+         console.log('Ingresa un número');
+       }
+    }
+
+    const formula = (calificacion)=>{
+      return ((5*calificacion)+(15)*(-3)/3)+calificacion;
+    }
+    
+  </script>
+</html>
