@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var nota = prompt("Calificacion");
+
+        var nombre = prompt("Nombre");
+
+        var edad = prompt("Edad");
+
+        if (nota <= 2) {
+            var mensaje = " Muy deficiente";
+        }
+        if (nota >= 3 && nota <= 4) {
+            var mensaje = " Insuficiente";
+        }
+        if (nota >= 5 && nota <= 6) {
+            var mensaje = " Suficiente";
+        }
+        if (nota >= 7 && nota <= 8) {
+            var mensaje = " Bien";
+        }
+        if (nota == 9) {
+            var mensaje = " Notable";
+        }
+        if (nota == 10) {
+            var mensaje = " Sobresaliente";
+        }
+        if (nota > 11) {
+            var mensaje = "Calificacion mayor a 10";
+        }
+
+        let objeto = {
+            nombre: nombre,
+            edad: edad,
+            nota: nota,
+            mensaje: mensaje,
+        };
+
+        console.log(objeto);
+
+        document.write("Nombre: ", objeto["nombre"]);
+        document.write("<p></p>");
+        document.write("Edad: ", objeto["edad"]);
+        document.write("<p></p>");
+        document.write("Calificacion: ", objeto["nota"]);
+        document.write("<p></p>");
+        document.write("Mensaje: ", objeto["mensaje"]);
+
+        if (!isNaN(nota)) {
+            alerta(nota);
+        }
+
+        function alerta(nota) {
+            alert(mensaje);
+        }
+
+        var formula = 5 * nota + (15 - 3) / 3 + nota;
+
+        if (formula == 0) {
+            console.log("resultado: 0");
+        } else {
+            formula_dividad = formula / 2;
+            if (formula_dividad % 1 == 0) {
+                console.log("Numero Impar");
+            } else {
+                console.log("numero par");
+            }
+        }
+    </script>
+</body>
+
+</html>
